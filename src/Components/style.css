@@ -1,0 +1,43 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.board {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 1200px;
+  height: 700px;
+  border: 1px solid black;
+  display: flex;
+}
+.player {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-flow: column;
+  width: 500px;
+  height: 600px;
+  border: 1px black solid;
+}
+/* .player-name {
+  text-align: center;
+} */
+.score-num {
+  font-size: 10rem;
+}
+.current-num {
+  font-size: 5rem;
+}
+/* img{
+    display: none;
+} */
