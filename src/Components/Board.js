@@ -4,6 +4,7 @@ import Player from './Player'
 
 const initialState = {
     display: 'none',
+    btn: false,
     cube1: 0,
     cube2: 0,
     firstPlayerTurn: true,
@@ -14,7 +15,8 @@ const initialState = {
     secondPlayerScore: 0,
     firstPlayerRoundScore: 0,
     secondPlayerRoundScore: 0,
-    finalScore: 20
+    finalScore: 100,
+    backColor: 'rgb(255, 245, 238)'
 }
 
 export default class Board extends Component {
@@ -69,16 +71,28 @@ export default class Board extends Component {
         }
 
     }
+
+    handleChange = (e) => {
+        this.setState({ finalScore: e.target.value })
+    }
+
     winner = () => {
         if (this.state.firstPlayerScore >= this.state.finalScore) {
             this.setState({
                 playerWin: true,
-                firstWinner: 'WINNER'
+                firstWinner: 'WINNER 🏆🎉',
+                secondWinner: 'LOOSER 💩',
+                btn: true,
+                size: '2.7rem'
+
             })
         } else if (this.state.secondPlayerScore >= this.state.finalScore) {
             this.setState({
                 playerWin: true,
-                secondWinner: 'WINNER'
+                secondWinner: 'WINNER 🏆🎉',
+                firstWinner: 'LOOSER 💩',
+                btn: true,
+                size: '2rem'
             })
         }
     }
@@ -86,8 +100,10 @@ export default class Board extends Component {
         if (this.state.playerWin === false) {
             this.winner()
         }
-
-
+    }
+    newGameClick = (e) => {
+        console.log(e.target);
+        this.setState({ ...initialState })
     }
 
     render() {
@@ -97,9 +113,19 @@ export default class Board extends Component {
                     player={`1 ${this.state.firstWinner}`}
                     globalScore={this.state.firstPlayerScore}
                     roundScore={this.state.firstPlayerRoundScore}
+                    backColor={this.state.firstPlayerTurn ? this.state.backColor : 'white'}
 
                 />
                 <div className="centr-dice">
+                    <button
+                        className='new-game'
+                        onClick={this.newGameClick}
+                        style={{
+                            fontSize: `${this.state.size}`
+                        }}
+                    >
+                        New Game
+                    </button>
                     <Dice
                         cube={this.state.cube1}
                         display={this.state.display}
@@ -109,14 +135,34 @@ export default class Board extends Component {
                         display={this.state.display}
                     />
 
-                    <button onClick={this.rollClick}>ROLL DICE</button>
-                    <button onClick={this.holdClick}>HOLD</button>
+                    <button
+                        onClick={this.rollClick}
+                        disabled={this.state.btn ? true : false}
+                    >
+                        ROLL DICE
+                    </button>
+
+                    <button
+                        disabled={this.state.btn ? true : false}
+                        onClick={this.holdClick}
+                    >
+                        HOLD
+                    </button>
+
+                    <input
+                        type="text"
+                        value={this.state.finalScore === 100 ? '' : this.state.finalScore}
+                        onChange={this.handleChange}
+                        placeholder='INPUT FINAL SCORE'
+                    >
+                    </input>
 
                 </div>
                 <Player
                     player={`2 ${this.state.secondWinner}`}
                     globalScore={this.state.secondPlayerScore}
                     roundScore={this.state.secondPlayerRoundScore}
+                    backColor={this.state.firstPlayerTurn ? 'white' : this.state.backColor}
                 />
             </div>
         )

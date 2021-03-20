@@ -15,19 +15,23 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 1200px;
+  width: 80vw;
   height: 700px;
-  border: 1px solid black;
   display: flex;
+  border-radius: 7px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 .player {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-flow: column;
-  width: 500px;
+  width: 400px;
+  border-radius: 7px;
   height: 600px;
-  border: 1px black solid;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 /* .player-name {
   text-align: center;
@@ -38,6 +42,99 @@ body {
 .current-num {
   font-size: 5rem;
 }
+.centr-dice {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-around;
+  align-items: center;
+}
+img {
+  border: 4px black solid;
+  border-radius: 20px;
+  height: 100px;
+  width: 100px;
+}
 /* img{
     display: none;
 } */
+button {
+  background-color: rgb(255, 238, 238);
+  border: 2px solid rgb(235, 77, 77);
+  border-radius: 5px;
+  color: rgb(0, 0, 0);
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+button:hover {
+  background-color: rgb(235, 77, 77);
+  color: rgb(255, 255, 255);
+}
+button:disabled {
+  background-color: rgb(209, 209, 209);
+  border: grey;
+  color: rgb(145, 145, 145);
+  cursor: not-allowed;
+}
+.new-game {
+  background-color: rgb(235, 77, 77);
+  font-size: 1.5rem;
+}
+input[type="text"] {
+  padding: 10px;
+  border: none;
+  background-color: rgb(216, 185, 185);
+  outline: none;
+  text-align: center;
+  font-size: 1.1rem;
+  border-radius: 5px;
+  font-weight: 600;
+}
+@media (max-width: 600px) {
+  .board {
+    width: 100vw;
+    height: 100vh;
+  }
+  h1{
+      font-size: 20px;
+  }
+  h2{
+      font-size: 15px;
+  }
+  .score-num {
+    font-size: 40px;
+  }
+  .current-num {
+    font-size: 30px;
+  }
+  .centr-dice {
+    height: 80%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  img{
+      width: 60px;
+      height: 60px;
+      border: 2px black solid;
+      border-radius: 5px;
+  }
+  .player{
+     width:40%;
+  }
+  button{
+      padding: 10px;
+      margin: 0;
+  }
+  input[type="text"] {
+      font-size: 0.6rem;
+      padding: 5px;
+      height: 40px;
+  }
+}
