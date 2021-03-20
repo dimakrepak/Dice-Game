@@ -8,11 +8,11 @@ export default class Player extends Component {
                 <h1 className="player-name">Player {this.props.player} </h1>
                 <div className="score">
                     <h2>score</h2>
-                    <span className="score-num">{this.props.score}</span>
+                    <span className="score-num">{this.props.globalScore}</span>
                 </div>
                 <div className='current'>
                     <h2>CURRENT</h2>
-                    <span className="current-num">{this.props.num}</span>
+                    <span className="current-num">{this.props.roundScore}</span>
                 </div>
             </div>
         )
